@@ -1,7 +1,6 @@
-const pug = require('pug');
-const renderCardFunc = pug.compileFile('template.pug');
-
-import $ from 'jquery'
+// const pug = require('pug');
+// const renderCardFunc = pug.compileFile('template.pug');
+import template from './template.pug';
 
 /*
 {"id":1,
@@ -16,21 +15,26 @@ import $ from 'jquery'
 }}
 */
 
-  let goods,
+  var goods,
       requestUrl = 'http://vue-tests.dev.creonit.ru/api/catalog/shiny?page=page',
       items;
 
   function render() {
     let cardsContainer = $('.js-cards-wrapper');
-    for (iem of items) {
-      let card = renderCardFunc(item);
+    for (var i = 0; i < items.length; i++) {
+      console.log(items[i]);
+      var card = template(items[i]);
       cardsContainer.append(card);
     }
+    // for (item of items) {
+    //
+    // }
   }
 
   function prepareItems() {
-    let itemsArr = goods.responseJSON.items;
+    var itemsArr = goods.responseJSON.items;
     items = itemsArr;
+    render();
   }
 
   goods = $.get({
@@ -38,6 +42,3 @@ import $ from 'jquery'
     success: prepareItems,
     dataType: 'json'
   });
-
-
-})(jQuery);
