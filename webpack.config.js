@@ -1,10 +1,18 @@
+var webpack = require("webpack");
+
 module.exports = {
   entry: './app.js',
   output: {
     filename: 'bundle.js'
   },
-  devtool: 'eval-source-map',
+  devtool: 'source-map',
   watch: true,
+  plugins: [
+    new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery"
+    })
+  ],
   module: {
     rules: [
       {
@@ -30,6 +38,8 @@ module.exports = {
         use: 'pug-loader'
       }
     ]
-  }
-
+  },
+  node: {
+   fs: "empty"
+}
 };
