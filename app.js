@@ -1,6 +1,6 @@
-// const pug = require('pug');
-// const renderCardFunc = pug.compileFile('template.pug');
-import template from './template.pug';
+import template from './assets/templates/card.pug';
+import "./dist/main.scss";
+import { Card } from  "./assets/js/card.js";
 
 /*
 {"id":1,
@@ -17,28 +17,27 @@ import template from './template.pug';
 
   var goods,
       requestUrl = 'http://vue-tests.dev.creonit.ru/api/catalog/shiny?page=page',
-      items;
-
-  function render() {
-    let cardsContainer = $('.js-cards-wrapper');
-    for (var i = 0; i < items.length; i++) {
-      console.log(items[i]);
-      var card = template(items[i]);
-      cardsContainer.append(card);
-    }
-    // for (item of items) {
-    //
-    // }
-  }
+      items,
+      cards = [];
 
   function prepareItems() {
     var itemsArr = goods.responseJSON.items;
     items = itemsArr;
-    render();
+    for (let item of items) {
+      let card = new Card();
+      card.init(item);
+      cards.push(card);
+    }
+  }
+
+  function renderCards(renderItems) {
+    for (let i = 0; i < renderItems.length; i++) {
+      renderItems[i].render();
+    }
   }
 
   goods = $.get({
     url: requestUrl,
     success: prepareItems,
     dataType: 'json'
-  });
+  }).done(renderCards.bind(this, cards));
