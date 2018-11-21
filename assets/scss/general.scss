@@ -1,0 +1,16 @@
+@import "scss-assets/_variables";
+@import "scss-assets/_mixins";
+
+html {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+body {
+  height: 100%;
+  @include reset-pad-marg();
+  background: rgb(43,45,88);
+  @include gradient(335deg, $bg-gradient-color);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
