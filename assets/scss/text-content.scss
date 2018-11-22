@@ -3,15 +3,16 @@
 
 .card-text-content {
   width: 100%;
-  box-sizing: border-box;
-  padding: 0 30px;
 
   &__title {
+    position: relative;
     @include reset-pad-marg();
     margin-top: -10px;
     font-size: 30px;
     font-weight: 400;
     color: #ffffff;
+    transition: all 0.3s;
+    transform: translateX(20px);
   }
 
   &__price {
@@ -19,15 +20,18 @@
     display: block;
     width: 100%;
     @include reset-pad-marg();
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 29px;
     font-weight: 700;
     color: #ffffff;
+    transition: all 0.3s;
+    transform: translateX(20px);
 
     &::after {
       content: '₽';
-      margin-left: 7px;
+      margin-left: 6px;
       font-size: 26px;
+      font-weight: 500;
       color: rgba(255, 255, 255, 0.5);
     }
   }
@@ -38,7 +42,7 @@
     text-align: center;
     font-size: 15px;
     font-weight: 400;
-    color: #ffffff;
+    color: #000000;
   }
 
   &__slug {
@@ -47,10 +51,21 @@
     text-align: center;
     font-size: 15px;
     font-weight: 400;
-    color: #ffffff;
+    color: #000000;
   }
 
   &--card-expanded {
     margin-top: 20px;
+  }
+}
+
+.card-text-content--card-expanded {
+
+  &__title {
+    color: $card-expanded-font-color;
+  }
+
+  &__price {
+    color: $card-expanded-font-color;
   }
 }
