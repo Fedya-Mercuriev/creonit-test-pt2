@@ -2,7 +2,9 @@
 @import "scss-assets/_mixins";
 
 .card-text-content {
-
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 30px;
 
   &__title {
     @include reset-pad-marg();
@@ -10,23 +12,45 @@
     font-size: 30px;
     font-weight: 400;
     color: #ffffff;
-    text-align: center;
   }
 
   &__price {
     position: relative;
     display: block;
     width: 100%;
+    @include reset-pad-marg();
     margin-top: 20px;
     font-size: 29px;
     font-weight: 700;
     color: #ffffff;
-    text-align: center;
 
     &::after {
       content: '₽';
-      margin-left: 5px;
-      font-size: 29px;
+      margin-left: 7px;
+      font-size: 26px;
+      color: rgba(255, 255, 255, 0.5);
     }
+  }
+
+  &__item-id {
+    @include reset-pad-marg();
+    margin-top: 10px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 400;
+    color: #ffffff;
+  }
+
+  &__slug {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 400;
+    color: #ffffff;
+  }
+
+  &--card-expanded {
+    margin-top: 20px;
   }
 }

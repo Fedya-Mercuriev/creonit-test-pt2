@@ -1,0 +1,47 @@
+@import "scss-assets/_variables";
+@import "scss-assets/_mixins";
+
+.view-more-info-btn {
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  &__text-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    font-size: 90%;
+    color: #ffffff;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 20px;
+      margin-left: 15px;
+      transition: transform 0.3s;
+      transform: rotate(0deg);
+      background-color: #ffffff;
+      // background-image: url('../img/arrow-down.svg');
+    }
+  }
+
+  &--expanded {
+
+    &__text-content {
+
+      &::after {
+        content: "";
+        display: block;
+        width: 20px;
+        height: 20px;
+        transform: rotate(-180deg);
+        // background-image: url('../img/arrow-down.svg');
+      }
+    }
+  }
+}
