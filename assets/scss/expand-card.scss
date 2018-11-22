@@ -15,7 +15,7 @@
     flex-direction: row;
     align-items: flex-end;
     font-size: 90%;
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.5);
 
     &::after {
       content: "";
@@ -25,12 +25,21 @@
       margin-left: 15px;
       transition: transform 0.3s;
       transform: rotate(0deg);
-      background-color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.5);
       // background-image: url('../img/arrow-down.svg');
+    }
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.9);
+
+      &::after {
+        background-color: rgba(255, 255, 255, 0.9);
+      }
     }
   }
 
   &--expanded {
+    color: $card-expanded-font-color;
 
     &__text-content {
 
