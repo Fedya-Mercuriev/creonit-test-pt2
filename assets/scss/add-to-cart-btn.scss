@@ -1,0 +1,10 @@
+@import "scss-assets/_variables";
+@import "scss-assets/_mixins";
+
+.add-to-cart-btn {
+  display: block;
+  padding: 15px 20px;
+  border-radius: 6px;
+  background-color: rgba(255,255,255, 0.7);
+  color: #000000;
+}
