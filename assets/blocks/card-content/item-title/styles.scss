@@ -1,0 +1,13 @@
+@import "../../../scss-assets/_variables";
+@import "../../../scss-assets/_mixins";
+
+.item-title {
+  position: relative;
+  @include reset-pad-marg();
+  margin-top: -10px;
+  font-size: 30px;
+  font-weight: 400;
+  color: #ffffff;
+  transition: all 0.3s;
+  transform: translateX(20px);
+}

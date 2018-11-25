@@ -1,0 +1,40 @@
+@import "../../../scss-assets/_variables";
+@import "../../../scss-assets/_mixins";
+
+.item-category {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &__slug {
+    //display: block;
+    //margin-top: 10px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 400;
+    color: #000000;
+  }
+
+  &__vertical-separator {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    width: 20px;
+    height: inherit;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 1px;
+      background-color: black;
+    }
+  }
+
+  &__category {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 400;
+    color: #000000;
+  }
+}
