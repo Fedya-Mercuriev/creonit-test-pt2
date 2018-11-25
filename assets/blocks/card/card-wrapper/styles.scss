@@ -1,0 +1,8 @@
+@import '../../../scss-assets/variables';
+@import '../../../scss-assets/mixins';
+
+.card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}

@@ -1,0 +1,23 @@
+@import "../../../scss-assets/_variables";
+@import "../../../scss-assets/_mixins";
+
+.item-price {
+  position: relative;
+  display: block;
+  width: 100%;
+  @include reset-pad-marg();
+  margin-top: 10px;
+  font-size: 29px;
+  font-weight: 700;
+  color: #ffffff;
+  transition: all 0.3s;
+  transform: translateX(20px);
+
+  &::after {
+    content: '₽';
+    margin-left: 6px;
+    font-size: 26px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
