@@ -1,6 +1,6 @@
 import { Component } from '../../component';
 
-import layout from 'assets/blocks/card/card-wrapper/layout.pug';
+import layout from './layout.pug';
 
 
 export class CardWrapper extends Component {
@@ -10,6 +10,6 @@ export class CardWrapper extends Component {
   }
 
   render() {
-    $(this.el).html(layout(this.options));
+    $(this.el).html(layout());
   }
 }
