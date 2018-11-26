@@ -1,0 +1,19 @@
+@import "../../../scss-assets/_variables";
+@import "../../../scss-assets/_mixins";
+
+.add-to-cart-btn {
+  box-sizing: border-box;
+  width: 70%;
+  display: block;
+  padding: 15px 20px;
+  border-radius: 6px;
+  background-color: $add-to-cart-btn-bg;
+  text-align: center;
+  color: #000000;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: lighten($add-to-cart-btn-bg, 15%);
+  }
+}
