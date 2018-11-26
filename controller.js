@@ -1,22 +1,22 @@
 export class Controller {
     constructor() {
-        this.apiUrl = "http://vue-tests.dev.creonit.ru/api/";
+        this.apiUrl = "http://vue-tests.dev.creonit.ru/api";
         this.tasks = {};
+        this.categories = ['shiny', 'diski'];
+        this.defaultCategory = this.categories[0];
     }
 
-    task(name, fn) {
+    registerTask(name, fn) {
         this.tasks[name] = fn;
     }
 
-    routeChanged() {
-        // Тут будет логика, которая будет обрабатывать хэщ  делать разные запросы
-        console.log('Изменился хэш');
+    invokeTask(name) {
+        let newArguments = Array.prototype.slice.call(arguments, 1);
+        this.tasks[arguments[0]].apply(this, newArguments);
     }
 
 
     start() {
-        window.addEventListener('hashchange', () => {
-            this.routeChanged();
-        })
+        this.invokeTask('get');
     }
 }

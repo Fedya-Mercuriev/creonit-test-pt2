@@ -1,6 +1,10 @@
 import template from './assets/templates/card.pug';
-import "./dist/main.scss";
-import { Card } from  "./assets/js/card.js";
+// import "./dist/main.scss";
+// import { Card } from  "./assets/js/card.js";
+import { Controller } from './controller.js';
+// import { ProductsView } from "./assets/views/products/products";
+// import  { CardView } from "./assets/views/card/card";
+
 
 /*
 {"id":1,
@@ -20,24 +24,69 @@ import { Card } from  "./assets/js/card.js";
       items,
       cards = [];
 
-  function prepareItems() {
-    var itemsArr = goods.responseJSON.items;
-    items = itemsArr;
-    for (let item of items) {
-      let card = new Card();
-      card.init(item);
-      cards.push(card);
-    }
+  // Эта функция уйдет в модель
+  // function prepareItems() {
+  //   var itemsArr = goods.responseJSON.items;
+  //   items = itemsArr;
+  //   for (let item of items) {
+  //     let card = new Card();
+  //     card.init(item);
+  //     cards.push(card);
+  //   }
+  // }
+
+  function start() {
+      const controller = new Controller();
+      // Делает запрос
+
+      // Сортирует данные и выдает их каждому view (только те даннеы, которые нужны конкретным view)
+      // const productsView = new ProductsView($('.js-product-cards-wrapper'));
+
+      // const card = new CardView();
+
+      controller.registerTask('get', function (itemCategory = controller.defaultCategory) {
+          $.get(
+              `${controller.apiUrl}/catalog/${itemCategory}`,
+              function(data) {
+                  return data;
+              },
+              'json'
+          );
+      });
+
+      controller.registerTask('post', function (itemId) {
+          $.get({
+              url: `${controller.apiUrl}/cart/product/${itemId}`
+          }).done(() => {
+              console.log(`Товар \"${itemId}\" добавлен в корзину`);
+          })
+      });
+
+      controller.start();
+
+      // Отправляет запрос на сервер
+      // controller.task('get', function(category) {
+      //   console.log('Отправил запрос get');
+      // });
+      //
+      // controller.task('post', function(itemId) {
+      //     console.log('Отправил запрос post');
+      // });
+
   }
 
-  function renderCards(renderItems) {
-    for (let i = 0; i < renderItems.length; i++) {
-      renderItems[i].render();
-    }
-  }
+  $(window).ready(() => {
+    start();
+  });
 
-  goods = $.get({
-    url: requestUrl,
-    success: prepareItems,
-    dataType: 'json'
-  }).done(renderCards.bind(this, cards));
+  // function renderCards(renderItems) {
+  //   for (let i = 0; i < renderItems.length; i++) {
+  //     renderItems[i].render();
+  //   }
+  // }
+
+  // goods = $.get({
+  //   url: requestUrl,
+  //   success: prepareItems,
+  //   dataType: 'json'
+  // }).done(renderCards.bind(this, cards));
