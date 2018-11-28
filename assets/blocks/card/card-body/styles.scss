@@ -2,23 +2,26 @@
 @import '../../../scss-assets/mixins';
 
 .card-body {
-  position: absolute;
-  z-index: 0;
   width: 250px;
   height: 250px;
   @include custom-border-radius(20px);
   background-color: rgba(255, 255, 255, 0.18);
-  transition: transform 0.35s;
+  transition: all 0.35s;
+  cursor: pointer;
+
+  //&:hover {
+  //  transform: scale(0.980);
+  //}
+
+  &--hovered {
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: scale(0.980);
+  }
 
   &--card-expanded {
     width: 330px;
-    height: auto;
+    height: inherit;
     padding-bottom: 30px;
     background-color: rgba(255, 255, 255, 0.7);
-    cursor: default;
-
-    &:hover {
-      transform: scale(1);
-    }
   }
 }
