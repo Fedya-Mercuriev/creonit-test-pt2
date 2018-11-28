@@ -1,5 +1,6 @@
 import { Component } from '../../component';
 import layout from './layout.pug';
+import _ from './styles.scss';
 
 
 export class ItemTitle extends Component{
@@ -7,7 +8,7 @@ export class ItemTitle extends Component{
         super(data);
     }
 
-    render() {
-        $(this.el).append(layout(this.options));
+    render(options) {
+        $(this.el).append(layout(options));
     }
 }
