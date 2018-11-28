@@ -6,7 +6,8 @@ import { CardContent } from "../card-content/card-content";
 import { ExpandCardBtn } from "../../blocks/card/expand-card-btn/expand-card";
 
 import layout from './layout.pug';
-// import {EventHandlers} from "../../js/event-handlers";
+import _ from './styles.scss';
+import {EventHandlers} from "../../js/event-handlers";
 
 
 export class CardView extends View {
@@ -16,7 +17,7 @@ export class CardView extends View {
         this.render();
 
         // this.render();
-        // const eventHandlers = new EventHandlers();
+        const eventHandlers = new EventHandlers();
 
         // Добавляем компоненты
 
@@ -24,24 +25,25 @@ export class CardView extends View {
         // и сразу отрисовываем их
 
 
-        this.cardBody = new CardBody($(`${this.el} .js-card-body-wrapper`));
+        this.cardBody = new CardBody($(this.el).find('div.js-card-body-wrapper'));
         // this.cardBody.render();
 
-        this.imgPreview = new ImagePreview($(`${this.el} .js-item-preview-img-wrapper`));
+        this.imgPreview = new ImagePreview($(this.el).find('div.js-item-preview-img-wrapper'));
         // this.imgPreview.render(this.options.content['image_preview']);
         // Это view для текстового контента карточки (название, цена и т.д.)
-        this.cardContent = new CardContent($(`${this.el} .card-content`));
-        this.expandCardBtn = new ExpandCardBtn($(`${this.el} .js-view-more-info-btn-wrapper`));
+        this.cardContent = new CardContent($(this.el).find('div.card-content'));
+        // Если что, вернуть все как было
+        this.expandCardBtn = new ExpandCardBtn($(this.el).find('div.view-more-info-btn'));
 
-        // $(this.el).mouseenter(() => {
-        //     let elemsToHighlight = $(this.el).find('.view-more-info-btn').children();
-        //     eventHandlers.highlightElems(elemsToHighlight, true, '--highlighted');
-        // });
+        $(this.el).mouseenter(() => {
+            let elemsToHighlight = $(this.el).find('.view-more-info-btn').children();
+            eventHandlers.highlightElems(elemsToHighlight, true, '--highlighted');
+        });
         //
-        // $(this.el).mouseleave(() => {
-        //     let elemsToHighlight = $(this.el).find('.view-more-info-btn').children();
-        //     eventHandlers.highlightElems(elemsToHighlight, false, '--highlighted');
-        // })
+        $(this.el).mouseleave(() => {
+            let elemsToHighlight = $(this.el).find('.view-more-info-btn').children();
+            eventHandlers.highlightElems(elemsToHighlight, false, '--highlighted');
+        })
     }
 
     render(options) {
