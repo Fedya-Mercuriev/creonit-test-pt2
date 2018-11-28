@@ -35,14 +35,17 @@ export class CardView extends View {
         // Если что, вернуть все как было
         this.expandCardBtn = new ExpandCardBtn($(this.el).find('div.view-more-info-btn'));
 
+        // Подсветим надпись "развернуть при наведении" и сожмем тело карточки
         $(this.el).mouseenter(() => {
             let elemsToHighlight = $(this.el).find('.view-more-info-btn').children();
             eventHandlers.highlightElems(elemsToHighlight, true, '--highlighted');
+            eventHandlers.addSqueezeEffect(this.el);
         });
-        //
+
         $(this.el).mouseleave(() => {
             let elemsToHighlight = $(this.el).find('.view-more-info-btn').children();
             eventHandlers.highlightElems(elemsToHighlight, false, '--highlighted');
+            eventHandlers.addSqueezeEffect(this.el);
         })
     }
 
