@@ -7,7 +7,7 @@ export class AddToCartBtn extends Component{
         super(data);
     }
 
-    render() {
-        $(this.el).append(layout(this.options));
+    render(options) {
+        $(this.el).append(layout(options));
     }
 }
