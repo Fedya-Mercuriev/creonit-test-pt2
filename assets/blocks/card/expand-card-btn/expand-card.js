@@ -3,11 +3,11 @@ import layout from './layout.pug'
 import _ from './styles.scss'
 
 export class ExpandCardBtn extends Component {
-    constructor(data) {
-        super(data);
+    constructor(el) {
+        super(el);
     }
 
-    render() {
-        $(this.el).html(layout(this.options));
+    render(options) {
+        $(this.el).append(layout(options));
     }
 }

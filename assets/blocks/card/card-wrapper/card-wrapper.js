@@ -5,11 +5,11 @@ import layout from './layout.pug';
 
 export class CardWrapper extends Component {
 
-  constructor(data) {
-    super(data);
+  constructor(el) {
+    super(el);
   }
 
   render() {
-    $(this.el).html(layout());
+    $(this.el).append(layout());
   }
 }

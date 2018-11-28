@@ -11,10 +11,9 @@ export class Controller {
     }
 
     invokeTask(name) {
-        let newArguments = Array.prototype.slice.call(arguments, 1);
-        this.tasks[arguments[0]].apply(this, newArguments);
+        let args = Array.prototype.slice.call(arguments, 1);
+        return this.tasks[arguments[0]].apply(this, args);
     }
-
 
     start() {
         this.invokeTask('get');

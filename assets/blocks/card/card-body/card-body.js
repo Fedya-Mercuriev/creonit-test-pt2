@@ -8,6 +8,6 @@ export class CardBody extends Component {
     }
 
     render() {
-        $(this.el).html(layout());
+        $(this.el).append(layout());
     }
 }
