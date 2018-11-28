@@ -8,6 +8,6 @@ export class ItemTitle extends Component{
     }
 
     render() {
-        $(this.el).html(layout(this.options));
+        $(this.el).append(layout(this.options));
     }
 }

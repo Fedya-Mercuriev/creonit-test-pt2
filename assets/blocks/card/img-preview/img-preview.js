@@ -7,7 +7,7 @@ export class ImagePreview extends Component {
         super(data);
     }
 
-    render() {
-        $(this.el).html(layout(this.options));
+    render(options) {
+        $(this.el).append(layout(options));
     }
 }
