@@ -1,16 +1,28 @@
-import { View } from "../view";
+import { CardView } from "../card/card";
+import _ from './styles.scss';
 
-export class ProductsView extends View {
+export class ProductsView {
 
-    constructor() {
-        super(data);
+    constructor(el) {
+        this.el = el;
+    }
+
+    render(options) {
+        for (let i = 0; i < options.length; i++) {
+            let opts = options[i],
+                $newElement = $(document.createElement('div'));
+            $newElement.addClass('card');
+            $(this.el).append($newElement);
+            const cardView = new CardView('.card:last');
+            $(this.el).append(cardView.render(opts));
+        }
     }
 
     show() {
-
+        $(this.el).show();
     }
 
     hide() {
-
+        $(this.el).hide();
     }
 }
