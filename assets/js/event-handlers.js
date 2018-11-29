@@ -25,11 +25,16 @@ export class EventHandlers {
     addSqueezeEffect(parent) {
       let $cardBody = $(parent).find('div.card-body');
       // Если карточка была нажата, при ее наведении ничего не происходит
-      if ($cardBody.hasClass('card-body--card-expanded')) {
-        return;
+      if ($cardBody.hasClass('card-body--hovered')) {
+        $cardBody.removeClass('card-body--hovered');
       } else {
-        $cardBody.toggleClass('card-body--hovered');
+        $cardBody.addClass('card-body--hovered')
       }
+     }
+
+     removeSqueezeEffect(parent) {
+         let $cardBody = $(parent).find('div.card-body');
+         $cardBody.removeClass('card-body--hovered');
      }
 
   }
