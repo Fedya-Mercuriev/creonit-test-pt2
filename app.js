@@ -1,8 +1,11 @@
 import template from './assets/templates/card.pug';
-// import "./dist/main.scss";
-// import { Card } from  "./assets/js/card.js";
+
 import { Controller } from './controller.js';
-// import { ProductsView } from "./assets/views/products/products";
+import { ProductsView } from "./assets/views/products/products";
+import { BigimgView } from './assets/views/big-img-view/big-img';
+import { CardModel } from "./assets/models/card-model";
+
+import _ from './general.scss';
 // import  { CardView } from "./assets/views/card/card";
 
 
@@ -19,11 +22,6 @@ import { Controller } from './controller.js';
 }}
 */
 
-  var goods,
-      requestUrl = 'http://vue-tests.dev.creonit.ru/api/catalog/shiny?page=page',
-      items,
-      cards = [];
-
   // Эта функция уйдет в модель
   // function prepareItems() {
   //   var itemsArr = goods.responseJSON.items;
@@ -37,28 +35,32 @@ import { Controller } from './controller.js';
 
   function start() {
       const controller = new Controller();
-      // Делает запрос
+      const cardModel = new CardModel();
 
-      // Сортирует данные и выдает их каждому view (только те даннеы, которые нужны конкретным view)
-      // const productsView = new ProductsView($('.js-product-cards-wrapper'));
-
-      // const card = new CardView();
+      const productsView = new ProductsView($('.js-product-cards-wrapper'));
+      const bigImgView = new BigimgView($('.big-item-img'));
 
       controller.registerTask('get', function (itemCategory = controller.defaultCategory) {
+          let goods;
           $.get(
               `${controller.apiUrl}/catalog/${itemCategory}`,
               function(data) {
                   return data;
               },
               'json'
-          );
+          ).done(function(data) {
+              let items = cardModel.prepareItems(data.items)
+              productsView.render(items);
+              // bigImgView
+          });
       });
 
       controller.registerTask('post', function (itemId) {
           $.get({
-              url: `${controller.apiUrl}/cart/product/${itemId}`
-          }).done(() => {
-              console.log(`Товар \"${itemId}\" добавлен в корзину`);
+              url: `${controller.apiUrl}/cart/product/${itemId}`,
+              function() {
+                console.log(`Товар \"${itemId}\" добавлен в корзину`);
+              }
           })
       });
 
@@ -73,7 +75,23 @@ import { Controller } from './controller.js';
       //     console.log('Отправил запрос post');
       // });
 
+      $('body').on('click', () => {
+          productsView.cards.forEach((card) => {
+              if ($(card.el).hasClass('card--card-expanded')) {
+                  card.wrap();
+              }
+          })
+      })
+
   }
+
+  // Обрабатывает клики по переключателю категорий
+$(window).on('click', (event) => {
+   // В зависимости от выбранной категории вызвать get с соответствующим аргументом
+
+});
+
+  // Обрабатывает клики по кнопкам "добавить в корзину" (???)
 
   $(window).ready(() => {
     start();
