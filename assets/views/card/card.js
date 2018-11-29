@@ -16,7 +16,7 @@ export class CardView extends View {
         this.isOpen = false;
 
         this.render();
-        
+
         const eventHandlers = new EventHandlers();
 
         // Добавляем компоненты
@@ -32,16 +32,32 @@ export class CardView extends View {
         this.expandCardBtn = new ExpandCardBtn($(this.el).find('div.view-more-info-btn'));
 
         // Подсветим надпись "развернуть" при наведении и сожмем тело карточки
-        $(this.el).mouseenter(() => {
+        $(this.el).mouseenter((event) => {
+            // let $cardBody = $(this.el).find('.card-body');
+            // if ($cardBody.hasClass('card-body--hovered')) {
+            //     $cardBody.removeClass('card-body--hovered');
+            // }
+
+            if ($(event.currentTarget).hasClass('card--card-expanded')) {
+                return;
+            };
             let elemsToHighlight = $(this.el).find('.view-more-info-btn').children();
             eventHandlers.highlightElems(elemsToHighlight, true, '--highlighted');
             eventHandlers.addSqueezeEffect(this.el);
         });
 
-        $(this.el).mouseleave(() => {
+        $(this.el).mouseleave((event) => {
+            // let $cardBody = $(this.el).find('.card-body');
+            // if ($cardBody.hasClass('card-body--hovered')) {
+            //     $cardBody.removeClass('card-body--hovered');
+            // }
+
+            if ($(event.currentTarget).hasClass('card--card-expanded')) {
+                return;
+            }
             let elemsToHighlight = $(this.el).find('.view-more-info-btn').children();
             eventHandlers.highlightElems(elemsToHighlight, false, '--highlighted');
-            eventHandlers.addSqueezeEffect(this.el);
+            eventHandlers.removeSqueezeEffect(this.el);
         });
     }
 
@@ -58,14 +74,23 @@ export class CardView extends View {
     }
 
     expand() {
+        let $cardBody = $(this.el).find('.card-body');
         $(this.el).addClass('card--card-expanded');
+        if ($cardBody.hasClass('card-body--hovered')) {
+            $cardBody.removeClass('card-body--hovered');
+        }
         this.cardBody.expand();
         this.isOpen = true;
     }
 
     wrap() {
+        let $cardBody = $(this.el).find('.card-body');
         $(this.el).removeClass('card--card-expanded');
+        if ($cardBody.hasClass('card-body--hovered')) {
+            $cardBody.removeClass('card-body--hovered');
+        }
         this.cardBody.wrap();
+        // $(this.el).find('card-body').removeClass('card-body--hovered');
         this.isOpen = false;
     }
 }
