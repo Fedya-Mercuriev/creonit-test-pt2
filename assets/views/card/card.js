@@ -13,17 +13,13 @@ import {EventHandlers} from "../../js/event-handlers";
 export class CardView extends View {
     constructor(el) {
         super(el);
+        this.isOpen = false;
 
         this.render();
-
-        // this.render();
+        
         const eventHandlers = new EventHandlers();
 
         // Добавляем компоненты
-
-        // this.card = new CardWrapper($('.js-card-wrapper'));
-        // и сразу отрисовываем их
-
 
         this.cardBody = new CardBody($(this.el).find('div.js-card-body-wrapper'));
         // this.cardBody.render();
@@ -35,7 +31,7 @@ export class CardView extends View {
         // Если что, вернуть все как было
         this.expandCardBtn = new ExpandCardBtn($(this.el).find('div.view-more-info-btn'));
 
-        // Подсветим надпись "развернуть при наведении" и сожмем тело карточки
+        // Подсветим надпись "развернуть" при наведении и сожмем тело карточки
         $(this.el).mouseenter(() => {
             let elemsToHighlight = $(this.el).find('.view-more-info-btn').children();
             eventHandlers.highlightElems(elemsToHighlight, true, '--highlighted');
@@ -46,11 +42,10 @@ export class CardView extends View {
             let elemsToHighlight = $(this.el).find('.view-more-info-btn').children();
             eventHandlers.highlightElems(elemsToHighlight, false, '--highlighted');
             eventHandlers.addSqueezeEffect(this.el);
-        })
+        });
     }
 
     render(options) {
-        // $(this.el).html(layout);
         if (options) {
             // this.card.render();
             this.cardBody.render();
@@ -62,15 +57,15 @@ export class CardView extends View {
         }
     }
 
-    show() {
-
-    }
-
     expand() {
-
+        $(this.el).addClass('card--card-expanded');
+        this.cardBody.expand();
+        this.isOpen = true;
     }
 
     wrap() {
-
+        $(this.el).removeClass('card--card-expanded');
+        this.cardBody.wrap();
+        this.isOpen = false;
     }
 }
