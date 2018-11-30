@@ -2,9 +2,9 @@
 @import "../../../scss-assets/_mixins";
 
 .item-category {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  display: none;
+  opacity: 0;
+  @include transition(all 0.3s);
 
   &__slug {
     //display: block;
@@ -27,6 +27,7 @@
       content: '';
       display: block;
       width: 1px;
+      height: 10px;
       background-color: black;
     }
   }
@@ -36,5 +37,15 @@
     font-size: 15px;
     font-weight: 400;
     color: #000000;
+  }
+
+  &--card-expanded {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 330px;
+    opacity: 1;
+    @include transform( translateY(230px) );
   }
 }

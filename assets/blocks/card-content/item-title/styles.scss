@@ -4,10 +4,18 @@
 .item-title {
   position: relative;
   @include reset-pad-marg();
-  margin-top: -10px;
+  //margin-top: -10px;
   font-size: 30px;
   font-weight: 400;
   color: #ffffff;
-  transition: all 0.3s;
-  transform: translateX(20px);
+  @include transition(all 0.3s);
+  @include transform(translateX(20px));
+
+  &--card-expanded {
+    width: 330px;
+    text-align: center;
+    font-weight: 500;
+    color: #000000;
+    @include transform( translateY(240px) );
+  }
 }

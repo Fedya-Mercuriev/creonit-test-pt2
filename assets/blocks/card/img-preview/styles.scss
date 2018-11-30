@@ -8,7 +8,9 @@
   @include custom-border-radius(10px);
   margin-top: 20px;
   background-color: #ffffff;
+  opacity: 0;
   overflow: hidden;
+  @include custom-box-shadow( 0px 3px 13px 0px rgba(0,0,0,0.45) );
 
   & img {
     width: 100%;
@@ -17,5 +19,6 @@
   
   &--card-expanded {
     display: block;
+    opacity: 1;
   }
 }

@@ -10,4 +10,15 @@ export class ExpandCardBtn extends Component {
     render(options) {
         $(this.el).append(layout(options));
     }
+
+    expand() {
+        let className = $(this.el).attr('class').split(' ')[0],
+            text = $(this.el).find()
+        $(this.el).addClass(`${className}--card-expanded`);
+    }
+
+    wrap() {
+        let classesArr = $(this.el).attr('class').split(' ');
+        $(this.el).removeClass(classesArr[classesArr.length - 1]);
+    }
 }
