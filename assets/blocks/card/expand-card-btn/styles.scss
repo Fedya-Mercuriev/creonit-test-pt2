@@ -1,9 +1,11 @@
 @import "../../../scss-assets/_variables";
 @import "../../../scss-assets/_mixins";
 
+$card-base-class: 'view-more-info-btn';
+
 .view-more-info-btn {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -22,6 +24,21 @@
       color: rgba(255, 255, 255, 0.9);
     }
   }
+
+  &--card-expanded {
+
+    & .view-more-info-btn__text-content {
+      color: rgba(0, 0, 0, 0.7);
+    }
+
+    .arrow-down {
+      transform: rotate(180deg);
+
+      &__arrow-down-shape {
+        fill: rgba(0, 0, 0, 0.7);
+      }
+    }
+  }
 }
 
 .arrow-down {
@@ -29,6 +46,7 @@
   width: 15px;
   height: 15px;
   margin-left: 8px;
+  transition: all 0.3s;
 
   &__arrow-down-shape {
     fill: rgba(255, 255, 255, 0.5);

@@ -14,7 +14,11 @@ export class ProductsView extends View{
                 let target = event.currentTarget;
                 // Таргетом явлется сама карточка или вложенный элемент?
                 if (target == card.el) {
-                    (card.isOpen) ? card.wrap() : card.expand();
+                    if (card.isOpen) {
+                        card.wrap();
+                    } else {
+                        card.expand();
+                    }
                 } else {
                     if (!card.isOpen) {
                         return
@@ -23,7 +27,18 @@ export class ProductsView extends View{
                     }
                 }
             })
-        })
+            event.stopPropagation();
+        });
+
+        // $(document.body).click(() => {
+        //     this.cards.forEach((card) => {
+        //         if (card.isOpen) {
+        //             card.wrap();
+        //         } else {
+        //             return;
+        //         }
+        //     })
+        // })
     }
 
     render(options) {

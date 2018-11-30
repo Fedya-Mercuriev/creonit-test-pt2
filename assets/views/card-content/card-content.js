@@ -1,11 +1,12 @@
 import { ItemTitle } from "../../blocks/card-content/item-title/item-title";
 import { ItemPrice } from "../../blocks/card-content/item-price/item-price";
 import { ItemId } from "../../blocks/card-content/item-id/item-id";
-import {ItemCategory} from "../../blocks/card-content/item-category/item-category";
+import { ItemCategory } from "../../blocks/card-content/item-category/item-category";
 import { AddToCartBtn } from "../../blocks/card-content/add-to-cart-btn/add-to-cart-btn";
 import { View } from "../view";
 
 import layout from './layout.pug';
+import _ from './styles.scss';
 
 export class CardContent extends View {
     constructor(el) {
@@ -27,10 +28,22 @@ export class CardContent extends View {
             this.itemCategory.render(cardContent.category);
             this.addToCartBtn.render('Добавить в корзину');
         }
-        // else {
-        //     this.el.html(layout());
-        // }
+    }
 
+    expand() {
+        this.title.expand();
+        this.price.expand();
+        this.itemId.expand();
+        this.itemCategory.expand();
+        this.addToCartBtn.expand();
+    }
+
+    wrap() {
+        this.title.wrap();
+        this.price.wrap();
+        this.itemId.wrap();
+        this.itemCategory.wrap();
+        this.addToCartBtn.wrap();
     }
 
     // Отобразим компоненты и релизуем обработчики событий

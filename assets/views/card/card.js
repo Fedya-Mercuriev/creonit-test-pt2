@@ -1,9 +1,10 @@
 import { View } from "../view";
-import { CardWrapper } from "../../blocks/card/card-wrapper/card-wrapper";
+// import { CardWrapper } from "../../blocks/card/card-wrapper/card-wrapper";
 import { CardBody } from "../../blocks/card/card-body/card-body";
 import { ImagePreview } from "../../blocks/card/img-preview/img-preview";
 import { CardContent } from "../card-content/card-content";
 import { ExpandCardBtn } from "../../blocks/card/expand-card-btn/expand-card";
+import { CardModel } from "../../models/card-model";
 
 import layout from './layout.pug';
 import _ from './styles.scss';
@@ -22,10 +23,9 @@ export class CardView extends View {
         // Добавляем компоненты
 
         this.cardBody = new CardBody($(this.el).find('div.js-card-body-wrapper'));
-        // this.cardBody.render();
 
         this.imgPreview = new ImagePreview($(this.el).find('div.js-item-preview-img-wrapper'));
-        // this.imgPreview.render(this.options.content['image_preview']);
+
         // Это view для текстового контента карточки (название, цена и т.д.)
         this.cardContent = new CardContent($(this.el).find('div.card-content'));
         // Если что, вернуть все как было
@@ -80,6 +80,9 @@ export class CardView extends View {
             $cardBody.removeClass('card-body--hovered');
         }
         this.cardBody.expand();
+        this.expandCardBtn.expand();
+        this.imgPreview.expand();
+        this.cardContent.expand();
         this.isOpen = true;
     }
 
@@ -90,7 +93,9 @@ export class CardView extends View {
             $cardBody.removeClass('card-body--hovered');
         }
         this.cardBody.wrap();
-        // $(this.el).find('card-body').removeClass('card-body--hovered');
+        this.expandCardBtn.wrap();
+        this.imgPreview.wrap();
+        this.cardContent.wrap();
         this.isOpen = false;
     }
 }

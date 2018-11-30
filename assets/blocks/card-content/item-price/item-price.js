@@ -12,4 +12,16 @@ export class ItemPrice extends Component {
     render(options) {
         $(this.el).append(layout(options));
     }
+
+    expand() {
+        let titleElem = $(this.el).find('.item-price'),
+            elemClasses = $(titleElem).attr('class').split(' ');
+        $(titleElem).addClass(`${elemClasses[0]}--card-expanded`);
+    }
+
+    wrap() {
+        let titleElem = $(this.el).find('.item-price'),
+            elemClasses = $(titleElem).attr('class').split(' ');
+        $(titleElem).removeClass(elemClasses[elemClasses.length - 1]);
+    }
 }

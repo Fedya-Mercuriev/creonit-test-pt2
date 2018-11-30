@@ -10,4 +10,16 @@ export class CardBody extends Component {
     render() {
         $(this.el).append(layout());
     }
+
+    expand() {
+        let bodyElem = $(this.el).find('div.card-body'),
+            elemClasses = $(bodyElem).attr('class').split(' ');
+        $(bodyElem).addClass(`${elemClasses[0]}--card-expanded`);
+    }
+
+    wrap() {
+        let bodyElem = $(this.el).find('div.card-body'),
+            elemClasses = $(bodyElem).attr('class').split(' ');
+        $(bodyElem).removeClass(elemClasses[elemClasses.length - 1]);
+    }
 }
