@@ -4,10 +4,13 @@
 .item-title {
   position: relative;
   @include reset-pad-marg();
-  //margin-top: -10px;
+  width: 240px;
   font-size: 30px;
   font-weight: 400;
   color: #ffffff;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   @include transition(all 0.3s);
   @include transform(translateX(20px));
 
