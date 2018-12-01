@@ -3,10 +3,7 @@ export class CardModel {
         this.cardOptions = {
             cardContent: {}
         };
-        this.viewMoreInfoTxt = {
-            default: "Развернуть",
-            expanded: "Свернуть"
-        };
+        this.viewMoreInfoTxt = "Развернуть";
         this.itemImg = {};
     }
 
