@@ -1,9 +1,21 @@
-@import "_variables";
+@import "variables";
 
 @mixin reset-pad-marg() {
   padding: 0;
   margin: 0;
 }
+
+//@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+//  @if $inset {
+//    -webkit-box-shadow:inset $top $left $blur $color;
+//    -moz-box-shadow:inset $top $left $blur $color;
+//    box-shadow:inset $top $left $blur $color;
+//  } @else {
+//    -webkit-box-shadow: $top $left $blur $color;
+//    -moz-box-shadow: $top $left $blur $color;
+//    box-shadow: $top $left $blur $color;
+//  }
+//}
 
 @mixin gradient($direction, $list) {
   background: -webkit-linear-gradient($direction, $list);
@@ -13,9 +25,28 @@
 }
 
 @mixin custom-box-shadow($shadows...) {
+  -webkit-box-shadow: $shadows;
+  -moz-box-box-shadow: $shadows;
   box-shadow: $shadows;
 }
 
 @mixin custom-border-radius($radius) {
   border-radius: $radius;
+}
+
+@mixin transform($transform) {
+  -webkit-transform: $transform;
+  -moz-transform: $transform;
+  -ms-transform: $transform;
+  -o-transform: $transform;
+  transform: $transform;
+}
+
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+
 }
