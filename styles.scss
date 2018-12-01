@@ -8,6 +8,8 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   min-height: 100%;
   @include reset-pad-marg();
   background: rgb(43,45,88);
