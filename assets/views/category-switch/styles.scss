@@ -1,0 +1,48 @@
+@import "../../scss-assets/_variables";
+@import "../../scss-assets/_mixins";
+
+.js-item-category-switch {
+  order: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.category-switch-wrapper {
+  position: relative;
+  width: 60px;
+  height: 31px;
+  border: 1px solid #ffffff;
+  @include custom-border-radius(40px);
+  margin: 0 15px;
+  cursor: pointer;
+
+  &__category-flag {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 25px;
+    height: 25px;
+    @include custom-border-radius(50%);
+    @include transition(all 0.25s);
+    background-color: #ffffff;
+  }
+}
+
+.category-link {
+  color: rgba(255, 255, 255, 0.6);
+  @include transition(all 0.36s);
+  cursor: pointer;
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  &--category-chosen {
+    color: rgba(255, 255, 255, 1);
+  }
+
+}
