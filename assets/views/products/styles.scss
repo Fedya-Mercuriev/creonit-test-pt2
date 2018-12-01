@@ -2,6 +2,7 @@
 @import "../../scss-assets/_mixins";
 
 .js-product-cards-wrapper {
+  order: 2;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
