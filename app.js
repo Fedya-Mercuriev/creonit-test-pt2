@@ -1,12 +1,10 @@
-import template from './assets/templates/card.pug';
-
 import { Controller } from './controller.js';
 import { ProductsView } from "./assets/views/products/products";
+import { CategorySwitch } from "./assets/views/category-switch/category-switch";
 import { BigimgView } from './assets/views/big-img-view/big-img';
 import { CardModel } from "./assets/models/card-model";
 
-import _ from './general.scss';
-// import  { CardView } from "./assets/views/card/card";
+import _ from './styles.scss';
 
 
 /*
@@ -33,12 +31,14 @@ import _ from './general.scss';
   //   }
   // }
 
-  function start() {
-      const controller = new Controller();
-      const cardModel = new CardModel();
+const controller = new Controller();
+const cardModel = new CardModel();
 
-      const productsView = new ProductsView($('.js-product-cards-wrapper'));
-      const bigImgView = new BigimgView($('.big-item-img'));
+const productsView = new ProductsView($('.js-product-cards-wrapper'));
+const categorySwitch = new CategorySwitch($('.js-item-category-switch'));
+const bigImgView = new BigimgView($('.big-item-img'));
+
+  function start() {
 
       controller.registerTask('get', function (itemCategory = controller.defaultCategory) {
           let goods;
@@ -51,6 +51,7 @@ import _ from './general.scss';
           ).done(function(data) {
               let items = cardModel.prepareItems(data.items)
               productsView.render(items);
+              categorySwitch.render();
               // bigImgView
           });
       });
@@ -81,27 +82,21 @@ import _ from './general.scss';
                   card.wrap();
               }
           })
-      })
+      });
+
+      // Обрабатывает клики по переключателю категорий
+      $(window).on('click', (event) => {
+          // В зависимости от выбранной категории вызвать get с соответствующим аргументом
+
+      });
 
   }
 
-  // Обрабатывает клики по переключателю категорий
-$(window).on('click', (event) => {
-   // В зависимости от выбранной категории вызвать get с соответствующим аргументом
-
-});
-
-  // Обрабатывает клики по кнопкам "добавить в корзину" (???)
 
   $(window).ready(() => {
     start();
   });
 
-  // function renderCards(renderItems) {
-  //   for (let i = 0; i < renderItems.length; i++) {
-  //     renderItems[i].render();
-  //   }
-  // }
 
   // goods = $.get({
   //   url: requestUrl,
