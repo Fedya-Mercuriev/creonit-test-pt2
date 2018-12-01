@@ -39,6 +39,7 @@ const categorySwitch = new CategorySwitch($('.js-item-category-switch'));
 const bigImgView = new BigimgView($('.big-item-img'));
 
   function start() {
+      categorySwitch.render();
 
       controller.registerTask('get', function (itemCategory = controller.defaultCategory) {
           let goods;
@@ -49,9 +50,8 @@ const bigImgView = new BigimgView($('.big-item-img'));
               },
               'json'
           ).done(function(data) {
-              let items = cardModel.prepareItems(data.items)
+              let items = cardModel.prepareItems(data.items);
               productsView.render(items);
-              categorySwitch.render();
               // bigImgView
           });
       });
@@ -85,9 +85,11 @@ const bigImgView = new BigimgView($('.big-item-img'));
       });
 
       // Обрабатывает клики по переключателю категорий
-      $(window).on('click', (event) => {
+      $(categorySwitch.el).on('click', '.category-switch-block', (event) => {
           // В зависимости от выбранной категории вызвать get с соответствующим аргументом
-
+          // Очистим секцию products от карточек
+          $(productsView.el).empty();
+          controller.tasks['get'](categorySwitch.categoryChosen);
       });
 
   }
