@@ -10,15 +10,15 @@ import layout from './layout.pug';
 import _ from './styles.scss';
 import {EventHandlers} from "../../js/event-handlers";
 
+const eventHandlers = new EventHandlers();
 
 export class CardView extends View {
     constructor(el) {
         super(el);
         this.isOpen = false;
+        this.itemId;
 
         this.render();
-
-        const eventHandlers = new EventHandlers();
 
         // Добавляем компоненты
 
@@ -61,13 +61,15 @@ export class CardView extends View {
         });
     }
 
+
     render(options) {
         if (options) {
             // this.card.render();
+            this.itemId = options.content.id;
             this.cardBody.render();
             this.imgPreview.render(options.content.image_preview);
             this.cardContent.render(options.content);
-            this.expandCardBtn.render(options.viewMoreInfoBtn.default);
+            this.expandCardBtn.render(options.viewMoreInfoBtn);
         } else {
             $(this.el).html(layout());
         }
@@ -87,7 +89,8 @@ export class CardView extends View {
     }
 
     wrap() {
-        let $cardBody = $(this.el).find('.card-body');
+        let $cardBody = $(this.el).find('.card-body'),
+            expandCardBtn = $(this.el).find('.view-more-info-btn');
         $(this.el).removeClass('card--card-expanded');
         if ($cardBody.hasClass('card-body--hovered')) {
             $cardBody.removeClass('card-body--hovered');
@@ -96,6 +99,9 @@ export class CardView extends View {
         this.expandCardBtn.wrap();
         this.imgPreview.wrap();
         this.cardContent.wrap();
+        // Скрытый метод, убирающий подсветку у надписи "развернуть"
+        let elemsToDehighlight = $(this.el).find('.view-more-info-btn').children();
+        eventHandlers.highlightElems(elemsToDehighlight, false, '--highlighted');
         this.isOpen = false;
     }
 }
