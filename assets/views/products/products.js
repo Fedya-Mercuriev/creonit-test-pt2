@@ -1,6 +1,9 @@
 import { View } from "../view";
 import { CardView } from "../card/card";
+import { BigimgView } from './assets/views/big-img-view/big-img';
 import _ from './styles.scss';
+
+const bigImgView = new BigimgView($('.big-item-img'));
 
 export class ProductsView extends View {
 
