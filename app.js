@@ -76,12 +76,21 @@ const bigImgView = new BigimgView($('.big-item-img'));
       //     console.log('Отправил запрос post');
       // });
 
-      $('body').on('click', () => {
-          productsView.cards.forEach((card) => {
-              if ($(card.el).hasClass('card--card-expanded')) {
-                  card.wrap();
-              }
-          })
+      $('body').on('click', (event) => {
+          if ($(event.target).is('a')) {
+              return;
+          } else {
+              productsView.cards.forEach((card) => {
+                  if ($(card.el).hasClass('card--card-expanded')) {
+                      card.wrap();
+                  }
+              })
+          }
+      });
+
+      $(document).on('click', 'a.add-to-cart-btn', (event) => {
+          event.preventDefault();
+          console.log(event.currentTarget);
       });
 
       // Обрабатывает клики по переключателю категорий
