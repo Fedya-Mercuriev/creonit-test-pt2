@@ -1,7 +1,6 @@
 import { Controller } from './controller.js';
 import { ProductsView } from "./assets/views/products/products";
 import { CategorySwitch } from "./assets/views/category-switch/category-switch";
-import { BigimgView } from './assets/views/big-img-view/big-img';
 import { CardModel } from "./assets/models/card-model";
 
 import _ from './styles.scss';
@@ -36,7 +35,6 @@ const cardModel = new CardModel();
 
 const productsView = new ProductsView($('.js-product-cards-wrapper'));
 const categorySwitch = new CategorySwitch($('.js-item-category-switch'));
-const bigImgView = new BigimgView($('.big-item-img'));
 
   function start() {
       categorySwitch.render();
@@ -57,11 +55,8 @@ const bigImgView = new BigimgView($('.big-item-img'));
       });
 
       controller.registerTask('post', function (itemId) {
-          $.get({
-              url: `${controller.apiUrl}/cart/product/${itemId}`,
-              function() {
-                console.log(`Товар \"${itemId}\" добавлен в корзину`);
-              }
+          $.post({
+              url: `${controller.apiUrl}/cart/product/${itemId}`
           })
       });
 
@@ -90,7 +85,12 @@ const bigImgView = new BigimgView($('.big-item-img'));
 
       $(document).on('click', 'a.add-to-cart-btn', (event) => {
           event.preventDefault();
-          console.log(event.currentTarget);
+          // Получим id товара из карточки
+          let targetParent = $(event.target).parents('.card-content'),
+              itemIdElem = $(targetParent).find('.item-id'),
+              itemIdElemText = $(itemIdElem).text();
+          console.log(itemIdElemText.charAt(itemIdElemText.length - 1))
+          controller.tasks['post'](itemIdElemText.charAt(itemIdElemText.length - 1));
       });
 
       // Обрабатывает клики по переключателю категорий
