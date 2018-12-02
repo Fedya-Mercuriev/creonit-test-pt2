@@ -33,7 +33,7 @@ export class CategorySwitch extends View {
                 categoryLinks = $(this.el).find('.category-link');
 
             if (this.categoryChosen === 'shiny') {
-                this.categoryChosen = 'disky';
+                this.categoryChosen = 'diski';
                 $(categoryFlag).css('left', '32px');
                 $(categoryLinks[0]).removeClass('category-link--category-chosen');
                 $(categoryLinks[1]).addClass('category-link--category-chosen');
