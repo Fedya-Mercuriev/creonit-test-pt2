@@ -7,7 +7,7 @@ export class EventHandlers {
       if (needsHighlight) {
         $.each(elemsArr, (_, element) => {
           // Получим класс текущего элемента
-          let currElemClass  = $(element).attr('class');
+          let currElemClass  = $(element).attr('class').split(' ')[0];
           // Подсветим элемент
           $(element).addClass(`${currElemClass}${modifier}`);
         })
@@ -25,11 +25,11 @@ export class EventHandlers {
     addSqueezeEffect(parent) {
       let $cardBody = $(parent).find('div.card-body');
       // Если карточка была нажата, при ее наведении ничего не происходит
-      if ($cardBody.hasClass('card-body--hovered')) {
-        $cardBody.removeClass('card-body--hovered');
-      } else {
+      // if ($cardBody.hasClass('card-body--hovered')) {
+      //   $cardBody.removeClass('card-body--hovered');
+      // } else {
         $cardBody.addClass('card-body--hovered')
-      }
+      // }
      }
 
      removeSqueezeEffect(parent) {
