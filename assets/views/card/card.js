@@ -7,7 +7,11 @@ import { ExpandCardBtn } from "../../blocks/card/expand-card-btn/expand-card";
 import { CardModel } from "../../models/card-model";
 
 import layout from './layout.pug';
+import loading from './loading-layout.pug';
+
 import _ from './styles.scss';
+
+import { controller } from "../../../app";
 import {EventHandlers} from "../../js/event-handlers";
 
 const eventHandlers = new EventHandlers();
@@ -59,6 +63,43 @@ export class CardView extends View {
             eventHandlers.highlightElems(elemsToHighlight, false, '--highlighted');
             eventHandlers.removeSqueezeEffect(this.el);
         });
+
+        $(this.el).on('click', 'a.add-to-cart-btn', (event) => {
+            event.preventDefault();
+            let controlBtn = new Promise((resolve, reject) => {
+                controller.tasks['post'](this.itemId);
+                $(event.target).html(loading());
+
+                resolve(event.target);
+
+                reject();
+            });
+
+            controlBtn.then(
+                (target) => {
+                    // Анимация загрузки
+                    setTimeout(() => {
+                        $(target).html('<span class="add-to-cart-btn-status-txt">Готово</span>');
+                        $('.add-to-cart-btn-status-txt').fadeTo(1000, 0);
+                        setTimeout(() => {
+                            $(target).html('Добавить в корзину');
+                        }, 1000);
+                    }, 1000);
+                    console.log(target);
+
+                },
+                () => {
+                    // Ошибка
+                    setTimeout(() => {
+                        $(target).html('<span class="add-to-cart-btn-status-txt">Ошибка</span>');
+                        $('.add-to-cart-btn-status-txt').fadeTo(1000, 0);
+                        setTimeout(() => {
+                            $(target).html('Добавить в корзину');
+                        }, 1000);
+                    }, 1000);
+                }
+            )
+            });
     }
 
 

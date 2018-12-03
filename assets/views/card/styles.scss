@@ -1,3 +1,6 @@
+@import "../../scss-assets/_variables";
+@import "../../scss-assets/_mixins";
+
 .card {
   position: relative;
   cursor: pointer;
@@ -16,4 +19,23 @@
   flex-direction: row;
   justify-content: center;
   width: 330px;
+}
+
+.loading-icon {
+  width: 25px;
+  //height: 30px;
+  @include animation(rotation, 0.5s, infinite, linear);
+
+  &__shape {
+    fill: #ffffff;
+  }
+}
+
+@include keyframes(rotation) {
+  from {
+    @include transform(rotate(0deg));
+  }
+  to {
+    @include transform(rotate(360deg));
+  }
 }
