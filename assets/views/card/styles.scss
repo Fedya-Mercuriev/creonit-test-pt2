@@ -15,10 +15,39 @@
 .js-item-preview-img-wrapper {
   position: absolute;
   top: 0;
+  z-index: 1;
   display: flex;
   flex-direction: row;
   justify-content: center;
   width: 330px;
+}
+
+.item-preview-img {
+  position: relative;
+
+  &::after {
+    content: 'Увеличить';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    opacity: 0;
+    @include transition(opacity 0.3s);
+  }
+
+  &:hover {
+
+    &::after {
+      opacity: 1;
+    }
+  }
 }
 
 .loading-icon {
