@@ -3,23 +3,28 @@ export class EventHandlers {
 
   }
     // Эта функция подсвечивает выбранные элементы
-    highlightElems(elemsArr, needsHighlight, modifier) {
-      if (needsHighlight) {
-        $.each(elemsArr, (_, element) => {
-          // Получим класс текущего элемента
-          let currElemClass  = $(element).attr('class').split(' ')[0];
-          // Подсветим элемент
-          $(element).addClass(`${currElemClass}${modifier}`);
-        })
-      } else {
-        $.each(elemsArr, (_, element) => {
-          // Получим класс текущего элемента
-          let elementClasses = element.classList,
-              classToRemove = elementClasses[elementClasses.length - 1];
-          // Подсветим элемент
-          $(element).removeClass(`${classToRemove}`);
-        })
-      }
+    highlightElems(elemsArr, modifier) {
+      let elemsAr = $.makeArray(elemsArr);
+        elemsAr.forEach((element) => {
+            let currElemClass  = $(element).attr('class').split(' ')[0];
+            // Подсветим элемент
+            $(element).addClass(`${currElemClass}${modifier}`);
+        });
+        // $.each(elemsArr, (_, element) => {
+        //   // Получим класс текущего элемента
+        //   let currElemClass  = $(element).attr('class').split(' ')[0];
+        //   // Подсветим элемент
+        //   $(element).addClass(`${currElemClass}${modifier}`);
+        // })
+    }
+
+    dehighlightElems(elemsArr, modifier) {
+        let elemsAr = $.makeArray(elemsArr);
+        elemsAr.forEach((element) => {
+            let currElemClass  = $(element).attr('class').split(' ')[0];
+            // Подсветим элемент
+            $(element).removeClass(`${currElemClass}${modifier}`);
+        });
     }
 
     addSqueezeEffect(parent) {

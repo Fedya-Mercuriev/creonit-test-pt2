@@ -49,7 +49,7 @@ export class CardView extends View {
                 return;
             };
             let elemsToHighlight = $(this.el).find('.view-more-info-btn').children();
-            eventHandlers.highlightElems(elemsToHighlight, true, '--highlighted');
+            eventHandlers.highlightElems(elemsToHighlight, '--highlighted');
             eventHandlers.addSqueezeEffect(this.el);
         });
 
@@ -58,12 +58,11 @@ export class CardView extends View {
             // if ($cardBody.hasClass('card-body--hovered')) {
             //     $cardBody.removeClass('card-body--hovered');
             // }
-
             if ($(event.currentTarget).hasClass('card--card-expanded')) {
                 return;
             }
             let elemsToHighlight = $(this.el).find('.view-more-info-btn').children();
-            eventHandlers.highlightElems(elemsToHighlight, false, '--highlighted');
+            eventHandlers.dehighlightElems(elemsToHighlight, '--highlighted');
             eventHandlers.removeSqueezeEffect(this.el);
         });
 
