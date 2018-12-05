@@ -1,9 +1,6 @@
 import { View } from "../view";
 import { CardView } from "../card/card";
-import { BigimgView } from './assets/views/big-img-view/big-img';
 import _ from './styles.scss';
-
-const bigImgView = new BigimgView($('.big-item-img'));
 
 export class ProductsView extends View {
 
@@ -55,28 +52,6 @@ export class ProductsView extends View {
         //     });
         //     event.stopPropagation();
         // });
-
-        // $(this.el).on('click', (event) => {
-        //     // Посмотрим на что нажал пользователь исходя из currentTarget
-        //     let eventTargetParentClass = $(event.currentTarget).attr('class').split(' ')[0],
-        //         productWrapperClass = $(this.el).attr('class').split(' ')[0];
-        //     // Если кликнули на кнопку добавки в корзину
-        //     if (eventTargetParentClass === 'card') {
-        //         return;
-        //     }
-        //     // Если кликнули по самой карточке или ее детям, кроме кнопки добавки в корзину
-        //     if (eventTargetParentClass === productWrapperClass) {
-        //         let parents = $(event.target).parentsUntil('.card');
-        //         console.log(parents);
-        //         $.each(this.cards, (_, card) => {
-        //             if (card.isOpen) {
-        //                 card.wrap();
-        //             } else {
-        //                 card.expand();
-        //             }
-        //         });
-        //     }
-        // })
     }
 
     render(options) {
@@ -86,16 +61,17 @@ export class ProductsView extends View {
             $(newElement).addClass('card');
             $(this.el).append(newElement);
             let cardView = new CardView(newElement);
+            cardView.bigImgUrl = opts.itemImg;
             $(this.el).append(cardView.render(opts));
             this.cards.push(cardView);
         }
-    }
+    };
 
     show() {
         $(this.el).show();
-    }
+    };
 
     hide() {
         $(this.el).hide();
-    }
+    };
 }
