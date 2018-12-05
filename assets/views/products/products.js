@@ -10,6 +10,10 @@ export class ProductsView extends View {
 
         // Обрабатываем клики по карточкам
         $(this.el).on('click', 'div.card', (event) => {
+            console.log(`Таргет: ${event.target}`);
+            if ($(event.target).is('.item-preview-img')) {
+                return;
+            }
             // let addToCartBtn = $(event.currentTarget).find('.add-to-cart-btn');
             if ($(event.target).is('a')) {
                 return;
