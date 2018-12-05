@@ -12,7 +12,6 @@ export class CardContent extends View {
     constructor(el) {
         super(el);
 
-        // this.render();
         this.title = new ItemTitle(this.el);
         this.price = new ItemPrice(this.el);
         this.itemId = new ItemId(this.el);
@@ -45,7 +44,5 @@ export class CardContent extends View {
         this.itemCategory.wrap();
         this.addToCartBtn.wrap();
     }
-
-    // Отобразим компоненты и релизуем обработчики событий
 }
 

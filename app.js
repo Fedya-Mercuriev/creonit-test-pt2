@@ -7,30 +7,6 @@ import { BigImgView } from './assets/views/big-img-view/big-img';
 import _ from './styles.scss';
 
 
-/*
-{"id":1,
-"title":"\u0428\u0438\u043d\u0430 1",
-"slug":"shina-1",
-"price":1000,
-"image":"http:\/\/vue-tests.dev.creonit.ru\/uploads\/e4f9bd4b166108abf40b9455dad2912c.jpeg",
-"image_preview":"http:\/\/vue-tests.dev.creonit.ru\/cache\/4\/f\/1\/4\/2\/4f142b1f8443dae25c894f2dba3460dddf3c4409.jpeg",
-"category":{
-  "title":"\u0428\u0438\u043d\u044b",
-  "slug":"shiny"
-}}
-*/
-
-  // Эта функция уйдет в модель
-  // function prepareItems() {
-  //   var itemsArr = goods.responseJSON.items;
-  //   items = itemsArr;
-  //   for (let item of items) {
-  //     let card = new Card();
-  //     card.init(item);
-  //     cards.push(card);
-  //   }
-  // }
-
 export const controller = new Controller();
 const cardModel = new CardModel();
 
@@ -43,7 +19,6 @@ export const bigImgView = new BigImgView($('.big-item-img'));
       categorySwitch.render();
 
       controller.registerTask('get', function (itemCategory = controller.defaultCategory) {
-          let goods;
           $.get(
               `${controller.apiUrl}/catalog/${itemCategory}`,
               function(data) {
@@ -65,15 +40,6 @@ export const bigImgView = new BigImgView($('.big-item-img'));
 
       controller.start();
 
-      // Отправляет запрос на сервер
-      // controller.task('get', function(category) {
-      //   console.log('Отправил запрос get');
-      // });
-      //
-      // controller.task('post', function(itemId) {
-      //     console.log('Отправил запрос post');
-      // });
-
       $('body').on('click', (event) => {
           if ($(event.target).is('a')) {
               return;
@@ -86,18 +52,8 @@ export const bigImgView = new BigImgView($('.big-item-img'));
           }
       });
 
-      // $(document).on('click', 'a.add-to-cart-btn', (event) => {
-      //     event.preventDefault();
-      //     // Получим id товара из карточки
-      //     let targetParent = $(event.target).parents('.card-content'),
-      //         itemIdElem = $(targetParent).find('.item-id'),
-      //         itemIdElemText = $(itemIdElem).text();
-      //     console.log(itemIdElemText.charAt(itemIdElemText.length - 1))
-      //     controller.tasks['post'](itemIdElemText.charAt(itemIdElemText.length - 1));
-      // });
-
       // Обрабатывает клики по переключателю категорий
-      $(categorySwitch.el).on('click', '.category-switch-block', (event) => {
+      $(categorySwitch.el).on('click', '.category-switch-block', () => {
           // В зависимости от выбранной категории вызвать get с соответствующим аргументом
           // Очистим секцию products от карточек
           $(productsView.el).empty();
@@ -110,10 +66,3 @@ export const bigImgView = new BigImgView($('.big-item-img'));
   $(window).ready(() => {
     start();
   });
-
-
-  // goods = $.get({
-  //   url: requestUrl,
-  //   success: prepareItems,
-  //   dataType: 'json'
-  // }).done(renderCards.bind(this, cards));

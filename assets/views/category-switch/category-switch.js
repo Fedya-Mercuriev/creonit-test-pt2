@@ -1,10 +1,7 @@
 import { View } from "../view";
 import layout from './layout.pug';
-import { EventHandlers } from "../../js/event-handlers";
 
 import _ from './styles.scss';
-
-const eventHandlers = new EventHandlers();
 
 export class CategorySwitch extends View {
     constructor(el) {
@@ -55,10 +52,4 @@ export class CategorySwitch extends View {
         $(categoryLinks[0]).addClass('category-link--category-chosen')
 
     }
-
-    switchCategory(category) {
-
-    }
-
-
 }

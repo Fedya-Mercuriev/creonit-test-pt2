@@ -14,7 +14,7 @@ export class ProductsView extends View {
             if ($(event.target).is('.item-preview-img')) {
                 return;
             }
-            // let addToCartBtn = $(event.currentTarget).find('.add-to-cart-btn');
+
             if ($(event.target).is('a')) {
                 return;
             } else {
@@ -36,26 +36,6 @@ export class ProductsView extends View {
                 });
             }
         });
-
-        // ТОЧНАЯ КОПИЯ
-        // $(this.el).on('click', 'div.card', (event) => {
-        //     this.cards.forEach((card) => {
-        //         let target = event.currentTarget;
-        //         // Таргетом явлется сама карточка или вложенный элемент?
-        //         if (target === card.el) {
-        //             if (card.isOpen) {
-        //                 card.wrap();
-        //             } else {
-        //                 card.expand();
-        //             }
-        //         } else {
-        //             if (card.isOpen) {
-        //                 card.wrap();
-        //             }
-        //         }
-        //     });
-        //     event.stopPropagation();
-        // });
     }
 
     render(options) {
@@ -69,13 +49,5 @@ export class ProductsView extends View {
             $(this.el).append(cardView.render(opts));
             this.cards.push(cardView);
         }
-    };
-
-    show() {
-        $(this.el).show();
-    };
-
-    hide() {
-        $(this.el).hide();
     };
 }

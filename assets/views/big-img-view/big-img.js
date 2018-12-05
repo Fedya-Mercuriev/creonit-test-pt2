@@ -2,11 +2,10 @@ import { View } from "../view";
 import layout from './layout.pug'
 import _ from './styles.scss';
 
-export class BigImgView  extends View{
+export class BigImgView  extends View {
     constructor(el) {
         super(el);
         this.imgIsShown = false;
-        // this.imgUrl;
 
         $(this.el).on('click', (event) => {
             if (!$(event.target).is('img')) {
@@ -35,10 +34,4 @@ export class BigImgView  extends View{
             this.imgIsShown = false;
         }
     }
-    // hideImg() {
-    //     let img = $(this.el).find('img'),
-    //         imgWrapper = $(this.el).find('.item-big-img-wrapper'),
-    //         elemClassname = $(imgWrapper).attr('class').split(' ');
-    //
-    // }
 }
