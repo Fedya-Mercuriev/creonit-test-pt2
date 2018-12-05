@@ -1,10 +1,8 @@
 import { View } from "../view";
-// import { CardWrapper } from "../../blocks/card/card-wrapper/card-wrapper";
 import { CardBody } from "../../blocks/card/card-body/card-body";
 import { ImagePreview } from "../../blocks/card/img-preview/img-preview";
 import { CardContent } from "../card-content/card-content";
 import { ExpandCardBtn } from "../../blocks/card/expand-card-btn/expand-card";
-import { CardModel } from "../../models/card-model";
 import { bigImgView } from "../../../app";
 
 import layout from './layout.pug';
@@ -13,7 +11,7 @@ import loading from './loading-layout.pug';
 import _ from './styles.scss';
 
 import { controller } from "../../../app";
-import { EventHandlers } from "../../js/event-handlers";
+import { EventHandlers } from "../../event-handlers";
 
 const eventHandlers = new EventHandlers();
 
@@ -23,7 +21,6 @@ export class CardView extends View {
         this.isOpen = false;
         this.itemId;
         this.bigImgUrl;
-        this.bigImgShown = false;
 
         this.render();
 
@@ -40,24 +37,17 @@ export class CardView extends View {
 
         // Подсветим надпись "развернуть" при наведении и сожмем тело карточки
         $(this.el).mouseenter((event) => {
-            // let $cardBody = $(this.el).find('.card-body');
-            // if ($cardBody.hasClass('card-body--hovered')) {
-            //     $cardBody.removeClass('card-body--hovered');
-            // }
 
             if ($(event.currentTarget).hasClass('card--card-expanded')) {
                 return;
-            };
+            }
+
             let elemsToHighlight = $(this.el).find('.view-more-info-btn').children();
             eventHandlers.highlightElems(elemsToHighlight, '--highlighted');
             eventHandlers.addSqueezeEffect(this.el);
         });
 
         $(this.el).mouseleave((event) => {
-            // let $cardBody = $(this.el).find('.card-body');
-            // if ($cardBody.hasClass('card-body--hovered')) {
-            //     $cardBody.removeClass('card-body--hovered');
-            // }
             if ($(event.currentTarget).hasClass('card--card-expanded')) {
                 return;
             }
@@ -105,15 +95,12 @@ export class CardView extends View {
 
         $(this.el).on('click', 'div.js-item-preview-img-wrapper', (event) => {
             bigImgView.processImg(this.bigImgUrl);
-            console.log('Нажали на картинку');
-            console.log(event.target);
         })
     }
 
 
     render(options) {
         if (options) {
-            // this.card.render();
             this.itemId = options.content.id;
             this.cardBody.render();
             this.imgPreview.render(options.content.image_preview);
