@@ -2,6 +2,7 @@ import { Controller } from './controller.js';
 import { ProductsView } from "./assets/views/products/products";
 import { CategorySwitch } from "./assets/views/category-switch/category-switch";
 import { CardModel } from "./assets/models/card-model";
+import { BigImgView } from './assets/views/big-img-view/big-img';
 
 import _ from './styles.scss';
 
@@ -30,11 +31,13 @@ import _ from './styles.scss';
   //   }
   // }
 
-const controller = new Controller();
+export const controller = new Controller();
 const cardModel = new CardModel();
 
 const productsView = new ProductsView($('.js-product-cards-wrapper'));
 const categorySwitch = new CategorySwitch($('.js-item-category-switch'));
+
+export const bigImgView = new BigImgView($('.big-item-img'));
 
   function start() {
       categorySwitch.render();
@@ -50,7 +53,7 @@ const categorySwitch = new CategorySwitch($('.js-item-category-switch'));
           ).done(function(data) {
               let items = cardModel.prepareItems(data.items);
               productsView.render(items);
-              // bigImgView
+              bigImgView.render();
           });
       });
 
@@ -83,15 +86,15 @@ const categorySwitch = new CategorySwitch($('.js-item-category-switch'));
           }
       });
 
-      $(document).on('click', 'a.add-to-cart-btn', (event) => {
-          event.preventDefault();
-          // Получим id товара из карточки
-          let targetParent = $(event.target).parents('.card-content'),
-              itemIdElem = $(targetParent).find('.item-id'),
-              itemIdElemText = $(itemIdElem).text();
-          console.log(itemIdElemText.charAt(itemIdElemText.length - 1))
-          controller.tasks['post'](itemIdElemText.charAt(itemIdElemText.length - 1));
-      });
+      // $(document).on('click', 'a.add-to-cart-btn', (event) => {
+      //     event.preventDefault();
+      //     // Получим id товара из карточки
+      //     let targetParent = $(event.target).parents('.card-content'),
+      //         itemIdElem = $(targetParent).find('.item-id'),
+      //         itemIdElemText = $(itemIdElem).text();
+      //     console.log(itemIdElemText.charAt(itemIdElemText.length - 1))
+      //     controller.tasks['post'](itemIdElemText.charAt(itemIdElemText.length - 1));
+      // });
 
       // Обрабатывает клики по переключателю категорий
       $(categorySwitch.el).on('click', '.category-switch-block', (event) => {
