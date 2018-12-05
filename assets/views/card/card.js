@@ -5,6 +5,7 @@ import { ImagePreview } from "../../blocks/card/img-preview/img-preview";
 import { CardContent } from "../card-content/card-content";
 import { ExpandCardBtn } from "../../blocks/card/expand-card-btn/expand-card";
 import { CardModel } from "../../models/card-model";
+import { bigImgView } from "../../../app";
 
 import layout from './layout.pug';
 import loading from './loading-layout.pug';
@@ -12,7 +13,7 @@ import loading from './loading-layout.pug';
 import _ from './styles.scss';
 
 import { controller } from "../../../app";
-import {EventHandlers} from "../../js/event-handlers";
+import { EventHandlers } from "../../js/event-handlers";
 
 const eventHandlers = new EventHandlers();
 
@@ -21,6 +22,8 @@ export class CardView extends View {
         super(el);
         this.isOpen = false;
         this.itemId;
+        this.bigImgUrl;
+        this.bigImgShown = false;
 
         this.render();
 
@@ -100,6 +103,12 @@ export class CardView extends View {
                 }
             )
             });
+
+        $(this.el).on('click', 'div.js-item-preview-img-wrapper', (event) => {
+            bigImgView.processImg(this.bigImgUrl);
+            console.log('Нажали на картинку');
+            console.log(event.target);
+        })
     }
 
 
