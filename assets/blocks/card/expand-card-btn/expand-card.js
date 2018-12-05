@@ -22,7 +22,7 @@ export class ExpandCardBtn extends Component {
         let className = $(this.el).attr('class').split(' ')[0],
             textBlock = $(this.el).find('span');
         let classesArr = $(this.el).attr('class').split(' ');
-        $(this.el).removeClass(classesArr[classesArr.length - 1]);
+        $(this.el).removeClass(`${classesArr[classesArr.length - 1]}`);
         $(textBlock).html('Развернуть');
     }
 }
