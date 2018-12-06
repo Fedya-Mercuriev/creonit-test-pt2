@@ -1,0 +1,17 @@
+@import 'scss-assets/variables';
+@import 'scss-assets/mixins';
+@import 'scss-assets/functions';
+@import 'styles';
+@import '../js/views/products/styles';
+@import '../js/views/category-switch/styles';
+@import '../js/views/card/styles';
+@import '../js/views/card-content/styles';
+@import '../js/blocks/card/card-body/styles';
+@import '../js/blocks/card/expand-card-btn/styles';
+@import '../js/blocks/card/img-preview/styles';
+@import '../js/blocks/card-content/item-title/styles';
+@import '../js/blocks/card-content/item-price/styles';
+@import '../js/blocks/card-content/item-id/styles';
+@import '../js/blocks/card-content/item-category/styles';
+@import '../js/blocks/card-content/add-to-cart-btn/styles';
+@import '../js/views/big-img-view/styles';

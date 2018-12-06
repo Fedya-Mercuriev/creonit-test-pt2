@@ -1,11 +1,12 @@
-var webpack = require("webpack");
+const webpack = require("webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: './app.js',
+  entry: './assets/js/app.js',
   output: {
     filename: 'bundle.js'
   },
-  devtool: 'source-map',
+
   watch: true,
   plugins: [
     new webpack.ProvidePlugin({
