@@ -1,6 +1,6 @@
 export class Controller {
     constructor() {
-        this.apiUrl = "https://vue-tests.dev.creonit.ru/api";
+        this.apiUrl = "http://vue-tests.dev.creonit.ru/api";
         this.tasks = {};
         this.categories = ['shiny', 'diski'];
         this.defaultCategory = this.categories[0];
