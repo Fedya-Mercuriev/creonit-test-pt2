@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/burlakilia/js-20180918.git"
+    "url": "git+https://github.com/Fedya-Mercuriev/creonit-test-pt2.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/burlakilia/js-20180918/issues"
+    "url": "https://github.com/Fedya-Mercuriev/creonit-test-pt2.git/issues"
   },
-  "homepage": "https://github.com/burlakilia/js-20180918#readme",
+  "homepage": "https://github.com/Fedya-Mercuriev/creonit-test-pt2.git#readme",
   "dependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
