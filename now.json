@@ -1,5 +1,7 @@
 {
+  "version": 1,
   "name": "Creonit-test",
+  "type": "static",
   "alias": "creonit.test",
   "env": {
     "NODE_ENV": "production"
