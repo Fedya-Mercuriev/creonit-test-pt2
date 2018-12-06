@@ -1,11 +1,12 @@
 {
-  "name": "js-20180918",
+  "name": "creonit-test",
   "version": "0.1.0",
   "description": "Test assignment",
   "main": "index.js",
   "scripts": {
     "dev": "static ./",
-    "build": "webpack"
+    "build": "webpack",
+    "start": "start"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,7 @@
+{
+  "name": "Creonit-test",
+  "alias": "creonit.test",
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
