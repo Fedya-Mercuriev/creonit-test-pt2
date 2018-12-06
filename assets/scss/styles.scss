@@ -1,0 +1,45 @@
+@import "./assets/scss-assets/_variables";
+@import "./assets/scss-assets/_mixins";
+@import "./assets/scss-assets/_functions";
+@import "./assets/scss-assets/config";
+
+html {
+  min-height: 100%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  @include reset-pad-marg();
+  background: rgb(43,45,88);
+  @include gradient(335deg, $bg-gradient-color);
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  @media screen and (max-width: map-deep-get($devices, mobile-l)) {
+    height: 100%;
+  }
+}
+
+.footer {
+  order: 4;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-bottom: 20px;
+
+  @media screen and (max-width: map-deep-get($devices, mobile-l)) {
+    position: relative;
+  }
+}
+
+.copyright {
+  display: block;
+  text-align: right;
+  margin-right: 35px;
+  color: rgba(255, 255, 255, 0.5);
+}

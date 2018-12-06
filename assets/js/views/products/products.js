@@ -10,7 +10,6 @@ export class ProductsView extends View {
 
         // Обрабатываем клики по карточкам
         $(this.el).on('click', 'div.card', (event) => {
-            console.log(`Таргет: ${event.target}`);
             if ($(event.target).is('.item-preview-img')) {
                 return;
             }

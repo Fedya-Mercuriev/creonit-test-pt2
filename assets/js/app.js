@@ -1,11 +1,11 @@
 import { Controller } from './controller.js';
-import { ProductsView } from "./assets/views/products/products";
-import { CategorySwitch } from "./assets/views/category-switch/category-switch";
+import { ProductsView } from "./assets/js/views/products/products";
+import { CategorySwitch } from "./assets/js/views/category-switch/category-switch";
 import { CardModel } from "./assets/models/card-model";
-import { BigImgView } from './assets/views/big-img-view/big-img';
+import { BigImgView } from './assets/js/views/big-img-view/big-img';
 
-import _ from './styles.scss';
-
+// import _ from './styles.scss';
+import _ from './dist/main.scss';
 
 export const controller = new Controller();
 const cardModel = new CardModel();
