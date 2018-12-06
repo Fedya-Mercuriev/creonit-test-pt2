@@ -1,6 +1,6 @@
 import { Component } from "../../component";
 import layout from './layout.pug';
-import _ from './styles.scss';
+// import _ from './styles.scss';
 
 export class AddToCartBtn extends Component{
     constructor(data) {

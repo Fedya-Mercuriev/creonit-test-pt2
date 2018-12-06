@@ -1,11 +1,10 @@
 import { Controller } from './controller.js';
-import { ProductsView } from "./assets/js/views/products/products";
-import { CategorySwitch } from "./assets/js/views/category-switch/category-switch";
-import { CardModel } from "./assets/models/card-model";
-import { BigImgView } from './assets/js/views/big-img-view/big-img';
+import { ProductsView } from "./views/products/products";
+import { CategorySwitch } from "./views/category-switch/category-switch";
+import { CardModel } from "../models/card-model";
+import { BigImgView } from './views/big-img-view/big-img';
 
-// import _ from './styles.scss';
-import _ from './dist/main.scss';
+import _ from '../scss/main.scss';
 
 export const controller = new Controller();
 const cardModel = new CardModel();
@@ -61,7 +60,6 @@ export const bigImgView = new BigImgView($('.big-item-img'));
       });
 
   }
-
 
   $(window).ready(() => {
     start();

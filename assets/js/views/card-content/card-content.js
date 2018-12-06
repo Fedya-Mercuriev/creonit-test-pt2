@@ -6,7 +6,6 @@ import { AddToCartBtn } from "../../blocks/card-content/add-to-cart-btn/add-to-c
 import { View } from "../view";
 
 import layout from './layout.pug';
-import _ from './styles.scss';
 
 export class CardContent extends View {
     constructor(el) {

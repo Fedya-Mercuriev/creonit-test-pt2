@@ -1,6 +1,5 @@
 import { View } from "../view";
 import { CardView } from "../card/card";
-import _ from './styles.scss';
 
 export class ProductsView extends View {
 

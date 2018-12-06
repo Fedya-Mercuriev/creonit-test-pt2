@@ -3,15 +3,12 @@ import { CardBody } from "../../blocks/card/card-body/card-body";
 import { ImagePreview } from "../../blocks/card/img-preview/img-preview";
 import { CardContent } from "../card-content/card-content";
 import { ExpandCardBtn } from "../../blocks/card/expand-card-btn/expand-card";
-import { bigImgView } from "../../../app";
+import { bigImgView } from "../../app";
+import { controller } from "../../app";
+import { EventHandlers } from "../../../event-handlers";
 
 import layout from './layout.pug';
 import loading from './loading-layout.pug';
-
-import _ from './styles.scss';
-
-import { controller } from "../../../app";
-import { EventHandlers } from "../../event-handlers";
 
 const eventHandlers = new EventHandlers();
 
