@@ -5,7 +5,7 @@ module.exports = {
   output: {
     filename: 'bundle.js'
   },
-
+  devtool: 'source-map',
   watch: true,
   plugins: [
     new webpack.ProvidePlugin({
