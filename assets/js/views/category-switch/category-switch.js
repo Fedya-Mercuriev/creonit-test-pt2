@@ -4,10 +4,12 @@ import layout from './layout.pug';
 export class CategorySwitch extends View {
     constructor(el) {
         super(el);
-        this.categoryChosen = 'shiny';
+        this.categoriesAvailable = ['shiny', 'diski'];
+        this.categoryChosen = this.categoriesAvailable[0];
 
         // Обрабатывает клики по лейблам
         $(this.el).on('click', '.category-link', (event) => {
+            console.log($(event.target).parent());
             let categoryFlag = $(this.el).find('.category-switch-wrapper__category-flag'),
                 categoryLinks = $(this.el).find('.category-link');
             this.categoryChosen = $(event.target).text();
@@ -42,12 +44,15 @@ export class CategorySwitch extends View {
     }
 
     render() {
+        // $(this.el).append(layout({
+        //     categoryOne: 'shiny',
+        //     categoryTwo: 'diski'
+        // }));
         $(this.el).append(layout({
-            categoryOne: 'shiny',
-            categoryTwo: 'diski'
+            categoryChosen: this.categoryChosen,
+            categories: this.categoriesAvailable
         }));
         let categoryLinks = $(this.el).find('.category-link');
         $(categoryLinks[0]).addClass('category-link--category-chosen')
-
     }
 }
