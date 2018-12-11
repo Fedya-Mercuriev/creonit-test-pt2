@@ -21,12 +21,16 @@ export class CategorySwitch extends View {
     }
 
     render() {
+        let chosenCategoryNum = this.categoriesAvailable.indexOf(this.categoryChosen),
+            listItemBaseclass;
         $(this.el).append(layout({
             categoryChosen: this.categoryChosen,
             categories: this.categoriesAvailable
         }));
         this.toggleListBtn = $(this.el).find('.toggle-categories-dropdown');
         this.dropdownList = $(this.el).find('.categories-dropdown-list');
+        listItemBaseclass = $('.categories-dropdown-list li').attr('class').split(' ')[0];
+        $('.categories-dropdown-list li').eq(chosenCategoryNum).addClass(`${listItemBaseclass}--category-chosen`);
         $(this.el).find('.categories-dropdown-list').hide();
     }
 
@@ -54,5 +58,15 @@ export class CategorySwitch extends View {
         let textElem = $(this.toggleListBtn).find('span'); 
         this.categoryChosen = category;
         $(textElem).html(this.categoryChosen);
+    }
+
+    highlightChosenCategory(item) {
+        let itemBaseClass = $(item).attr('class').split(' ')[0];
+        $(item).addClass(`${itemBaseClass}--category-chosen`);
+    }
+
+    dehighlightChosenCategory(item) {
+        let itemBaseClass = $(item).attr('class').split(' ')[0];
+        $(item).removeClass(`${itemBaseClass}--category-chosen`);
     }
 }

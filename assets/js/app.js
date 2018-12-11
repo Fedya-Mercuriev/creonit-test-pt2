@@ -61,10 +61,22 @@ export const bigImgView = new BigImgView($('.big-item-img'));
               categorySwitch.dehighlightToggle();
               categorySwitch.hideList();
           } else {
-              // В зависимости от выбранной категории вызвать get с соответствующим аргументом
-              // Очистим секцию products от карточек
+              // Удаляет модификатор у предыдущего элемента
+              let listItems = $(event.currentTarget).children();
+              $.each(listItems, (_, item) => {
+                  let modifiedItemClass = `${$(item).attr('class').split(' ')[0]}--category-chosen`;
+
+                 if ($(item).hasClass(modifiedItemClass)) {
+                     // Удалим модификатор и выйдем из цикла
+                     $(item).removeClass(modifiedItemClass);
+                     return false;
+                 }
+              });
               categorySwitch.overrideChosenCategory(categorySwitch.categoriesAvailable[itemNum]);
+              categorySwitch.highlightChosenCategory(event.target);
+              // Очистим секцию products от карточек
               $(productsView.el).empty();
+              // В зависимости от выбранной категории вызвать get с соответствующим аргументом
               controller.tasks['get'](categorySwitch.categoryChosen);
               categorySwitch.dehighlightToggle();
               categorySwitch.hideList();
