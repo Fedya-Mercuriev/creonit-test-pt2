@@ -19,48 +19,9 @@ export class CategorySwitch extends View {
             }
             event.stopPropagation();
         });
-
-        // Обрабатывает клики по лейблам
-        // $(this.el).on('click', '.category-link', (event) => {
-        //     console.log($(event.target).parent());
-        //     let categoryFlag = $(this.el).find('.category-switch-wrapper__category-flag'),
-        //         categoryLinks = $(this.el).find('.category-link');
-        //     this.categoryChosen = $(event.target).text();
-        //     if (this.categoryChosen === 'diski') {
-        //         $(categoryFlag).css('left', '32px');
-        //         $(categoryLinks[0]).removeClass('category-link--category-chosen');
-        //         $(categoryLinks[1]).addClass('category-link--category-chosen');
-        //     } else {
-        //         $(categoryFlag).css('left', '3px');
-        //         $(categoryLinks[0]).addClass('category-link--category-chosen');
-        //         $(categoryLinks[1]).removeClass('category-link--category-chosen');
-        //     }
-        // });
-
-        // Обрабатывает клики по самому переключателю
-        // $(this.el).on('click', '.category-switch-wrapper', () => {
-        //     let categoryFlag = $(this.el).find('.category-switch-wrapper__category-flag'),
-        //         categoryLinks = $(this.el).find('.category-link');
-        //
-        //     if (this.categoryChosen === 'shiny') {
-        //         this.categoryChosen = 'diski';
-        //         $(categoryFlag).css('left', '32px');
-        //         $(categoryLinks[0]).removeClass('category-link--category-chosen');
-        //         $(categoryLinks[1]).addClass('category-link--category-chosen');
-        //     } else {
-        //         this.categoryChosen = 'shiny';
-        //         $(categoryFlag).css('left', '3px');
-        //         $(categoryLinks[0]).addClass('category-link--category-chosen');
-        //         $(categoryLinks[1]).removeClass('category-link--category-chosen');
-        //     }
-        // })
     }
 
     render() {
-        // $(this.el).append(layout({
-        //     categoryOne: 'shiny',
-        //     categoryTwo: 'diski'
-        // }));
         $(this.el).append(layout({
             categoryChosen: this.categoryChosen,
             categories: this.categoriesAvailable
@@ -68,8 +29,6 @@ export class CategorySwitch extends View {
         this.toggleListBtn = $(this.el).find('.toggle-categories-dropdown');
         this.dropdownList = $(this.el).find('.categories-dropdown-list');
         $(this.el).find('.categories-dropdown-list').hide();
-        //let categoryLinks = $(this.el).find('.category-link');
-        //$(categoryLinks[0]).addClass('category-link--category-chosen')
     }
 
     showList() {
