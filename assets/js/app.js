@@ -47,16 +47,28 @@ export const bigImgView = new BigImgView($('.big-item-img'));
                   if ($(card.el).hasClass('card--card-expanded')) {
                       card.wrap();
                   }
-              })
+              });
+              // categorySwitch.dehighlightToggle();
+              // categorySwitch.hideList();
           }
       });
 
       // Обрабатывает клики по переключателю категорий
-      $(categorySwitch.el).on('click', '.category-switch-block', () => {
-          // В зависимости от выбранной категории вызвать get с соответствующим аргументом
-          // Очистим секцию products от карточек
-          $(productsView.el).empty();
-          controller.tasks['get'](categorySwitch.categoryChosen);
+      $(categorySwitch.el).on('click', '.categories-dropdown-list', (event) => {
+          let itemNum = $(event.target).index(),
+              currCategoryNum = categorySwitch.categoriesAvailable.indexOf(categorySwitch.categoryChosen);
+          if (itemNum === currCategoryNum) {
+              categorySwitch.dehighlightToggle();
+              categorySwitch.hideList();
+          } else {
+              // В зависимости от выбранной категории вызвать get с соответствующим аргументом
+              // Очистим секцию products от карточек
+              categorySwitch.overrideChosenCategory(categorySwitch.categoriesAvailable[itemNum]);
+              $(productsView.el).empty();
+              controller.tasks['get'](categorySwitch.categoryChosen);
+              categorySwitch.dehighlightToggle();
+              categorySwitch.hideList();
+          }
       });
 
   }
