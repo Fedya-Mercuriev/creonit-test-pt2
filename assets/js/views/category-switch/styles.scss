@@ -22,10 +22,13 @@
   width: 250px;
 }
 
-.chosen-category {
+$category-switch-classname: 'toggle-categories-dropdown';
+
+.toggle-categories-dropdown {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 10;
   width: 100%;
   padding: 15px 0;
   @include custom-box-shadow(inset 0px 0px 0px 2px #ffffff);
@@ -34,13 +37,8 @@
   text-align: center;
   background-color: rgba(255, 255, 255, 0);
   @include transition(background-color);
+  color: #ffffff;
   cursor: pointer;
-
-  &__text {
-    color: #ffffff;
-    font-size: 110%;
-    @include transition(color);
-  }
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.3);
@@ -49,6 +47,40 @@
   &:active {
     background-color: rgba(255, 255, 255, 0.5);
   }
+
+  &__arrow-down {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 15px;
+    height: 15px;
+    @include transform(rotate(0deg));
+    @include transition(all 0.3s);
+  }
+
+  &--toggled {
+    background-color: #ffffff;
+    @include custom-box-shadow(inset 0px 0px 0px 2px dark-grey);
+    color: #000000;
+
+    .#{$category-switch-classname}__arrow-down {
+      @include transform(rotate(180deg));
+
+      & path {
+        fill: #000000;
+      }
+    }
+
+    &:hover {
+      background-color: #ffffff;
+    }
+  }
+}
+
+.chosen-category-text {
+  color: inherit;
+  font-size: 110%;
+  @include transition(color);
 }
 
 .categories-dropdown-list {
