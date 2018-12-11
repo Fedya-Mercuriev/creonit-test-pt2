@@ -1,6 +1,10 @@
 @import "../../../scss/scss-assets/variables";
 @import "../../../scss/scss-assets/mixins";
 
+.big-item-img {
+  z-index: 9999;
+}
+
 .item-big-img-wrapper {
   order: 3;
   position: fixed;
