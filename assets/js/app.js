@@ -48,8 +48,8 @@ export const bigImgView = new BigImgView($('.big-item-img'));
                       card.wrap();
                   }
               });
-              // categorySwitch.dehighlightToggle();
-              // categorySwitch.hideList();
+              categorySwitch.dehighlightToggle();
+              categorySwitch.hideList();
           }
       });
 

@@ -9,7 +9,6 @@ export class CategorySwitch extends View {
 
         // Обрабатывает клики по тогглу
         $(this.el).on('click', '.toggle-categories-dropdown', (event) => {
-            console.log(this);
             if ($(this.dropdownList).is(':hidden')) {
                 this.highlightToggle();
                 this.showList();
